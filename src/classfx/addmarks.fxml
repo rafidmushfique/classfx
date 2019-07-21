@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.addmarksController">
+   <children>
+      <Pane layoutX="16.0" layoutY="53.0" opacity="0.79" prefHeight="505.0" prefWidth="665.0" style="-fx-background-color: white;">
+         <children>
+            <Label layoutX="68.0" layoutY="77.0" prefHeight="23.0" prefWidth="44.0" text="Name:" />
+            <TextField layoutX="112.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" promptText="David Baker" />
+            <Label layoutX="378.0" layoutY="77.0" prefHeight="23.0" prefWidth="44.0" text="Gender:" />
+            <TextField layoutX="422.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" promptText="Male/Feamle" />
+            <Label layoutX="79.0" layoutY="128.0" prefHeight="23.0" prefWidth="22.0" text="ID:" />
+            <TextField layoutX="112.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" promptText="123456" />
+            <Label layoutX="352.0" layoutY="128.0" prefHeight="23.0" prefWidth="74.0" text="Department:" />
+            <TextField layoutX="422.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
+            <Button layoutX="561.0" layoutY="380.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Update" />
+            <Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" wrappingWidth="128.99999618530273">
+               <font>
+                  <Font name="Calibri Italic" size="24.0" />
+               </font>
+            </Text>
+            <TextField layoutX="194.0" layoutY="240.0" prefHeight="25.0" prefWidth="163.0" promptText="Course ID Here" />
+            <Button layoutX="367.0" layoutY="240.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Search" />
+            <TableView layoutX="15.0" layoutY="270.0" prefHeight="200.0" prefWidth="429.0">
+              <columns>
+                <TableColumn prefWidth="428.0" text="Student Name" />
+              </columns>
+            </TableView>
+            <TextField layoutX="471.0" layoutY="305.0" prefHeight="25.0" prefWidth="157.0" promptText="Insert marks" />
+            <Button layoutX="542.0" layoutY="345.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Insert Marks" />
+            <Button layoutX="561.0" layoutY="426.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+         </children>
+      </Pane>
+      <Pane layoutX="205.0" opacity="0.79" prefHeight="35.0" prefWidth="230.0" style="-fx-background-color: white;">
+         <children>
+            <Text layoutX="4.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fauclty Panel" wrappingWidth="221.99999618530273">
+               <font>
+                  <Font name="Californian FB Bold" size="36.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
