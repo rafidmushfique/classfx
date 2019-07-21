@@ -19,6 +19,7 @@ public class Classfx extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        CreatingConnection conn = new CreatingConnection();// when you are doing UI work, comment out this line , this for database connection
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
         Scene scene = new Scene(root);
