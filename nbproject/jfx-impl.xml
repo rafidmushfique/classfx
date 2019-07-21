@@ -3802,6 +3802,9 @@
             <jvmarg value="-Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
+=======
 >>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
 =======
 >>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
@@ -3979,7 +3982,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <env key="JAVAWS_VM_ARGS" value="-agentlib:jdwp=transport=${debug-transport},address=${jpda.address} -Dglass.disableGrab=true"/>
+=======
+            <env key="JAVAWS_VM_ARGS" value="${debug-args-line} -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
+>>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
 =======
             <env key="JAVAWS_VM_ARGS" value="${debug-args-line} -Xrunjdwp:transport=${debug-transport},address=${jpda.address}"/>
 >>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
