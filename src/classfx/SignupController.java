@@ -42,12 +42,12 @@ public class SignupController implements Initializable {
     
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    choiceBox.getItems().add("What is your pet name?");
-    choiceBox.getItems().add("What is your Father name");
-    choiceBox.getItems().add("What is your Mother name");
-    choiceBox.getItems().add("What is your favourite Song?");
-    choiceBox.getItems().add("What is your hobby");
-    choiceBox.getItems().add("Any key value ?");
+  // choiceBox.getItems().add("What is your pet name?");
+  // choiceBox.getItems().add("What is your Father name");
+  // choiceBox.getItems().add("What is your Mother name");
+  // choiceBox.getItems().add("What is your favourite Song?");
+  // choiceBox.getItems().add("What is your hobby");
+  // choiceBox.getItems().add("Any key value ?");
     }    
     
 }
