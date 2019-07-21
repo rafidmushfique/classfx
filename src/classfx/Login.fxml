@@ -35,7 +35,7 @@
                </font>
             </Label>
             <TextField fx:id="text1" layoutX="178.0" layoutY="223.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
-            <PasswordField fx:id="pass1" layoutX="178.0" layoutY="318.0" prefHeight="25.0" prefWidth="284.0" />
+            <PasswordField fx:id="pass1" layoutX="178.0" layoutY="318.0" prefHeight="25.0" prefWidth="284.0" promptText="*******" />
          </children>
       </Pane>
    </children>

@@ -8,19 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     <jar href="classfx.jar" size="677927" download="eager" />
-=======
-    <jar href="classfx.jar" size="677891" download="eager" />
->>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
-=======
-    <jar href="classfx.jar" size="677891" download="eager" />
->>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
-=======
-    <jar href="classfx.jar" size="677891" download="eager" />
->>>>>>> 135876ecdd49d347c005a959aea58c92b386bd4c
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="classfx.Classfx"  name="classfx" />
   <update check="always"/>
