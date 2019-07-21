@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.SignupController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.SignupController">
    <children>
       <Pane layoutX="361.0" layoutY="9.0" prefHeight="584.0" prefWidth="329.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="9.0">
          <children>
@@ -48,7 +48,7 @@
             <TextField layoutX="21.0" layoutY="261.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
             <TextField layoutX="119.0" layoutY="359.0" prefHeight="25.0" prefWidth="186.0" promptText="ex. RafidMushfique" />
             <Button fx:id="signup1" layoutX="197.0" layoutY="553.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Back" />
-            <ChoiceBox layoutX="24.0" layoutY="326.0" prefHeight="25.0" prefWidth="284.0" />
+            <ChoiceBox fx:id="choiceBox" layoutX="24.0" layoutY="326.0" prefHeight="25.0" prefWidth="284.0" />
             <Label layoutX="49.0" layoutY="357.0" prefHeight="28.0" prefWidth="72.0" text="Answer:">
                <font>
                   <Font name="Arial Black" size="12.0" />
@@ -81,7 +81,7 @@
       </Pane>
       <Pane layoutX="5.0" layoutY="9.0" prefHeight="584.0" prefWidth="356.0" style="-fx-background-color: rgb(15,156,232);">
          <children>
-            <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="86.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="back" fitHeight="199.0" fitWidth="200.0" layoutX="86.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/bracu_logo.png" />
                </image>
