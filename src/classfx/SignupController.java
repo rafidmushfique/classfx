@@ -42,29 +42,15 @@ import javafx.stage.Stage;
  */
 public class SignupController implements Initializable {
 
-    @FXML
-    private Button signup;
-    @FXML
-    private Button back;
-    @FXML
     private ChoiceBox gender;
-    @FXML
     private ChoiceBox position;
-    @FXML
     private ChoiceBox securedQuestion;
-    @FXML
     private TextField name;
-    @FXML
     private TextField id;
-    @FXML
     private TextField email;
-    @FXML
     private TextField ans;
-    @FXML
     private TextField dept;
-    @FXML
     private PasswordField pass;
-    @FXML
     private ImageView waitingGif;
     Connection con;
     /**
@@ -88,7 +74,6 @@ public class SignupController implements Initializable {
         position.getItems().add("Accountant");
     }
 
-    @FXML
     public void backButton(ActionEvent event) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
@@ -101,7 +86,6 @@ public class SignupController implements Initializable {
         }
     }
 
-    @FXML
     public void SignUpButton(ActionEvent event) {
         try {
             waitingGif.setImage(new Image(this.getClass().getResource("waiting.gif").toExternalForm()));

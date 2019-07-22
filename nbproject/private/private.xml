@@ -3,33 +3,21 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/AccInfoController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/ForgotPasswordController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/StuInfo.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/StuInfoController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/FacultyInfo.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Faculty.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Student.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/addmarks.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Classfx.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/CourseController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/addmarksController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/SignupController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/AdminController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/ForgotPassword.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/FacultyController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Admin.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/LoginController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Aprrove.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/Course.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/AccInfo.fxml</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/USER/Documents/NetBeansProjects/classfx/src/classfx/AprroveController.java</file>
-=======
-            <file>file:/C:/Users/immah/Documents/GitHub/classfx/src/classfx/Classfx.java</file>
-            <file>file:/C:/Users/immah/Documents/GitHub/classfx/src/classfx/SignupController.java</file>
->>>>>>> e7d6f3b7516b69424c5628e605387489020d655b
+            <file>file:/F:/github/classfx/src/classfx/StudentController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/StuInfo.fxml</file>
+            <file>file:/F:/github/classfx/src/classfx/Accountent.fxml</file>
+            <file>file:/F:/github/classfx/src/classfx/FacultyInfoController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/Student.fxml</file>
+            <file>file:/F:/github/classfx/src/classfx/ValidateEmailAddress.java</file>
+            <file>file:/F:/github/classfx/src/classfx/Classfx.java</file>
+            <file>file:/F:/github/classfx/src/classfx/FacultyController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/FXMLDocumentController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/addmarksController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/AdminController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/SignupController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/StuInfoController.java</file>
+            <file>file:/F:/github/classfx/src/classfx/Login.fxml</file>
+            <file>file:/F:/github/classfx/src/classfx/FacultyInfo.fxml</file>
         </group>
     </open-files>
 </project-private>
