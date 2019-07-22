@@ -19,8 +19,8 @@ public class Classfx extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
+        CreatingConnection conn = new CreatingConnection(); // comment it out , if your working for UI 
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
-        
         Scene scene = new Scene(root);
         stage.setResizable(false);
         stage.setScene(scene);

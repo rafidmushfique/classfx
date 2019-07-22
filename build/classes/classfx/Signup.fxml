@@ -16,7 +16,7 @@
    <children>
       <Pane layoutX="361.0" layoutY="9.0" prefHeight="584.0" prefWidth="329.0" style="-fx-background-color: #ffff;" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="9.0">
          <children>
-            <Button fx:id="signup" layoutX="59.0" layoutY="553.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Signup" />
+            <Button fx:id="signup" layoutX="59.0" layoutY="553.0" mnemonicParsing="false" onAction="#SignUpButton" prefHeight="28.0" prefWidth="64.0" text="Signup" />
             <Text fontSmoothingType="LCD" layoutX="61.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Signup Form" wrappingWidth="206.13671689480543">
                <font>
                   <Font name="Californian FB Bold" size="36.0" />
@@ -24,31 +24,31 @@
             </Text>
             <Label layoutX="24.0" layoutY="50.0" prefHeight="28.0" prefWidth="72.0" text="Name:">
                <font>
-                  <Font name="Arial" size="12.0" />
+                  <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="24.0" layoutY="78.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
+            <TextField fx:id="name" layoutX="24.0" layoutY="78.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
             <Label layoutX="24.0" layoutY="110.0" prefHeight="28.0" prefWidth="72.0" text="ID:">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="24.0" layoutY="138.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
+            <TextField fx:id="id" layoutX="24.0" layoutY="138.0" prefHeight="25.0" prefWidth="284.0" promptText="ex: 17101394" />
             <Label layoutX="24.0" layoutY="173.0" prefHeight="28.0" prefWidth="88.0" text="Department:">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="24.0" layoutY="201.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
+            <TextField fx:id="dept" layoutX="24.0" layoutY="201.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. CSE (not mandatory for accountant user)" />
             <Label layoutX="24.0" layoutY="233.0" prefHeight="28.0" prefWidth="72.0" text="Email:">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <TextField layoutX="21.0" layoutY="261.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. RafidMushfique" />
-            <TextField layoutX="119.0" layoutY="359.0" prefHeight="25.0" prefWidth="186.0" promptText="ex. RafidMushfique" />
-            <Button fx:id="signup1" layoutX="197.0" layoutY="553.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="64.0" text="Back" />
-            <ChoiceBox fx:id="choiceBox" layoutX="24.0" layoutY="326.0" prefHeight="25.0" prefWidth="284.0" />
+            <TextField fx:id="email" layoutX="21.0" layoutY="261.0" prefHeight="25.0" prefWidth="284.0" promptText="ex: rasred75@gmail.com" />
+            <TextField fx:id="ans" layoutX="119.0" layoutY="359.0" prefHeight="25.0" prefWidth="186.0" promptText="ex. depends on your question" />
+            <Button fx:id="back" layoutX="197.0" layoutY="553.0" mnemonicParsing="false" onAction="#backButton" prefHeight="28.0" prefWidth="64.0" text="Back" />
+            <ChoiceBox fx:id="securedQuestion" layoutX="24.0" layoutY="326.0" prefHeight="25.0" prefWidth="284.0" />
             <Label layoutX="49.0" layoutY="357.0" prefHeight="28.0" prefWidth="72.0" text="Answer:">
                <font>
                   <Font name="Arial Black" size="12.0" />
@@ -59,8 +59,8 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <ChoiceBox layoutX="7.0" layoutY="423.0" prefHeight="25.0" prefWidth="105.0" />
-            <ChoiceBox layoutX="221.0" layoutY="423.0" prefHeight="25.0" prefWidth="105.0" />
+            <ChoiceBox fx:id="gender" layoutX="7.0" layoutY="423.0" prefHeight="25.0" prefWidth="105.0" />
+            <ChoiceBox fx:id="position" layoutX="221.0" layoutY="423.0" prefHeight="25.0" prefWidth="105.0" />
             <Label layoutX="12.0" layoutY="397.0" prefHeight="28.0" prefWidth="72.0" text="Gender:">
                <font>
                   <Font name="Arial Black" size="12.0" />
@@ -76,16 +76,17 @@
                   <Font name="Arial Black" size="12.0" />
                </font>
             </Label>
-            <PasswordField layoutX="96.0" layoutY="471.0" prefHeight="25.0" prefWidth="200.0" />
+            <PasswordField fx:id="pass" layoutX="96.0" layoutY="471.0" prefHeight="25.0" prefWidth="200.0" promptText="*********" />
          </children>
       </Pane>
       <Pane layoutX="5.0" layoutY="9.0" prefHeight="584.0" prefWidth="356.0" style="-fx-background-color: rgb(15,156,232);">
          <children>
-            <ImageView fx:id="back" fitHeight="199.0" fitWidth="200.0" layoutX="86.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="199.0" fitWidth="200.0" layoutX="86.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/bracu_logo.png" />
                </image>
             </ImageView>
+            <ImageView fx:id="waitingGif" fitHeight="150.0" fitWidth="200.0" layoutX="86.0" layoutY="385.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Pane>
    </children>
