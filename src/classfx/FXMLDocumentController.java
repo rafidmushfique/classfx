@@ -16,6 +16,8 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 /**
@@ -28,7 +30,8 @@ public class FXMLDocumentController implements Initializable {
     private Button login;
     @FXML
     private Button signup;
-    
+    @FXML
+    private ImageView gif;
     
     @FXML
   public void handleButton1(ActionEvent event) throws IOException
@@ -53,6 +56,8 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         gif.setImage(new Image(this.getClass().getResource("home.gif").toExternalForm()));
+         gif.setVisible(true);
     }    
     
 }
