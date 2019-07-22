@@ -38,7 +38,7 @@ public class FXMLDocumentController implements Initializable {
              Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
              window.setScene(nextScene);
              window.show();
-      //mhr75
+      
   }
    public void handleButton2(ActionEvent event) throws IOException
   {
