@@ -14,7 +14,7 @@
    <children>
       <Pane layoutX="248.0" layoutY="175.0" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="login" layoutX="178.0" layoutY="393.0" mnemonicParsing="false" onAction="#handle1" prefHeight="39.0" prefWidth="110.0" text="Login">
+            <Button fx:id="login" layoutX="178.0" layoutY="393.0" mnemonicParsing="false" onAction="#loginButton" prefHeight="39.0" prefWidth="110.0" text="Login">
                <font>
                   <Font name="Arial" size="12.0" />
                </font>
@@ -35,8 +35,8 @@
                   <Font name="Arial Bold" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="text1" layoutX="178.0" layoutY="223.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. 17101394" />
-            <PasswordField fx:id="pass1" layoutX="178.0" layoutY="318.0" prefHeight="25.0" prefWidth="284.0" promptText="*********" />
+            <TextField fx:id="id" layoutX="178.0" layoutY="223.0" prefHeight="25.0" prefWidth="284.0" promptText="ex. 17101394" />
+            <PasswordField fx:id="pass" layoutX="178.0" layoutY="318.0" prefHeight="25.0" prefWidth="284.0" promptText="*********" />
             <Button fx:id="back" layoutX="282.0" layoutY="523.0" mnemonicParsing="false" onAction="#backButton" prefHeight="28.0" prefWidth="84.0" text="Back" />
             <ImageView fx:id="loginGif" fitHeight="196.0" fitWidth="261.0" layoutX="414.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="loginGif2" fitHeight="83.0" fitWidth="103.0" layoutX="282.0" layoutY="440.0" pickOnBounds="true" preserveRatio="true" />

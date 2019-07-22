@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +23,9 @@ public class Classfx extends Application {
         CreatingConnection conn = new CreatingConnection(); // comment it out , if your working for UI 
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         Scene scene = new Scene(root);
+        Image i = new Image("img/mechaaboo.png");
+        stage.getIcons().add(i);
+        stage.setTitle("University Student Information System");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
