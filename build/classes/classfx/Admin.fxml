@@ -20,7 +20,7 @@
             <Button fx:id="studentinfo" layoutX="105.0" layoutY="147.0" mnemonicParsing="false" onAction="#studentinfo" prefHeight="91.0" prefWidth="210.0" text="Student's Information" />
             <Button fx:id="facultyinfo" layoutX="372.0" layoutY="147.0" mnemonicParsing="false" onAction="#facultyinfo" prefHeight="91.0" prefWidth="210.0" text="Faculty Information" />
             <Button fx:id="accountentinfo" layoutX="105.0" layoutY="259.0" mnemonicParsing="false" onAction="#accountentinfo" prefHeight="91.0" prefWidth="210.0" text="Accountent Information" />
-            <Button fx:id="approvelist" layoutX="388.0" layoutY="259.0" mnemonicParsing="false" onAction="#approvelist" prefHeight="91.0" prefWidth="210.0" text="Approve List" />
+            <Button fx:id="approvelist" layoutX="372.0" layoutY="259.0" mnemonicParsing="false" onAction="#approvelist" prefHeight="91.0" prefWidth="210.0" text="Approve List" />
             <Button layoutX="312.0" layoutY="526.0" mnemonicParsing="false" onAction="#Backbutton" prefHeight="33.0" prefWidth="60.0" text="Back" />
             <Text layoutX="210.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin Panel" textAlignment="CENTER" wrappingWidth="262.13671875">
                <font>

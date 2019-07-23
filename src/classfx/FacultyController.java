@@ -39,6 +39,7 @@ public class FacultyController implements Initializable {
              window.show();
       
   }
+   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

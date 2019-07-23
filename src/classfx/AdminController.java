@@ -66,7 +66,7 @@ public class AdminController implements Initializable {
   }
                   public void approvelist(ActionEvent event) throws IOException
   {
-       Parent root = FXMLLoader.load(getClass().getResource("Approve.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource("Aprrove.fxml"));
        Scene nextScene = new Scene(root);
              Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
              window.setScene(nextScene);
