@@ -17,7 +17,7 @@ import javafx.stage.Stage;
  * @author RafiD
  */
 public class Classfx extends Application {
-    
+    public static int semesterid=1;
     @Override
     public void start(Stage stage) throws Exception {
         CreatingConnection conn = new CreatingConnection(); // comment it out , if your working for UI 
