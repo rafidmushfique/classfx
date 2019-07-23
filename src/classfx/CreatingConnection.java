@@ -20,4 +20,8 @@ public class CreatingConnection {
          con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classch?zeroDateTimeBehavior=convertToNull", "root", "");
          // this for mhr75 connections with DB
     }
+
+    Object createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

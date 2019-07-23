@@ -12,17 +12,15 @@
    <children>
       <Pane layoutX="12.0" layoutY="17.0" prefHeight="567.0" prefWidth="673.0">
          <children>
-            <TableView layoutX="13.0" layoutY="66.0" prefHeight="437.0" prefWidth="647.0">
+            <TableView fx:id="table" layoutX="13.0" layoutY="66.0" prefHeight="437.0" prefWidth="647.0">
               <columns>
-                <TableColumn prefWidth="225.0" text="Name" />
-                  <TableColumn prefWidth="178.0" text="ID" />
-                  <TableColumn prefWidth="243.0" text="Email" />
+                <TableColumn fx:id="col_name" prefWidth="225.0" text="Name" />
+                  <TableColumn fx:id="col_id" prefWidth="178.0" text="ID" />
+                  <TableColumn fx:id="col_email" prefWidth="243.0" text="Email" />
               </columns>
             </TableView>
-            <Button layoutX="91.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Sort By Name" />
-            <Button layoutX="236.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Sort By Id" />
-            <Button layoutX="392.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Block" />
-            <Button fx:id="bk" layoutX="551.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+            <Button fx:id="block" layoutX="239.0" layoutY="528.0" mnemonicParsing="false" onAction="#blockbutton" prefHeight="25.0" prefWidth="67.0" text="Block" />
+            <Button fx:id="bk" layoutX="337.0" layoutY="528.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="25.0" prefWidth="67.0" text="Back" />
             <Text layoutX="175.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Accountent Information">
                <font>
                   <Font name="Californian FB Bold" size="36.0" />

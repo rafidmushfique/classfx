@@ -12,24 +12,21 @@
    <children>
       <Pane layoutX="12.0" layoutY="17.0" prefHeight="567.0" prefWidth="673.0">
          <children>
-            <TableView layoutX="13.0" layoutY="66.0" prefHeight="437.0" prefWidth="647.0">
+            <TableView fx:id="table" layoutX="13.0" layoutY="66.0" prefHeight="437.0" prefWidth="647.0">
                <columns>
-                  <TableColumn prefWidth="200.0" text="Name" />
-                  <TableColumn prefWidth="94.0" text="ID" />
-                  <TableColumn prefWidth="153.0" text="Department" />
-                  <TableColumn prefWidth="194.0" text="Email" />
+                  <TableColumn fx:id="col_name" prefWidth="200.0" text="Name" />
+                  <TableColumn fx:id="col_id" prefWidth="94.0" text="ID" />
+                  <TableColumn fx:id="col_dept" prefWidth="153.0" text="Department" />
+                  <TableColumn fx:id="col_email" prefWidth="194.0" text="Email" />
                </columns>
             </TableView>
-            <Button layoutX="49.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Sort By Name" />
-            <Button layoutX="181.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Sort By Id" />
-            <Button layoutX="452.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Block" />
-            <Button fx:id="bak" layoutX="581.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+            <Button fx:id="block" layoutX="225.0" layoutY="528.0" mnemonicParsing="false" onAction="#blockbutton" prefHeight="25.0" prefWidth="67.0" text="Block" />
+            <Button fx:id="bak" layoutX="334.0" layoutY="528.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="25.0" prefWidth="67.0" text="Back" />
             <Text layoutX="175.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Information">
                <font>
                   <Font name="Californian FB Bold" size="36.0" />
                </font>
             </Text>
-            <Button layoutX="312.0" layoutY="528.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Sort By Name" />
          </children>
       </Pane>
    </children>
