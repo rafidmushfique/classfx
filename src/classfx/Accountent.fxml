@@ -38,7 +38,7 @@
             <Label layoutX="51.0" layoutY="28.0" prefHeight="23.0" prefWidth="47.0" text="Bank:" />
             <TextField fx:id="banktext" layoutX="114.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="436.0" layoutY="83.0" prefHeight="23.0" prefWidth="37.0" text="Date:" />
-            <Button fx:id="backbutton" layoutX="419.0" layoutY="207.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Back" />
+            <Button fx:id="backbutton" layoutX="419.0" layoutY="207.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="36.0" prefWidth="72.0" text="Back" />
             <TextField fx:id="datetext" layoutX="504.0" layoutY="82.0" prefHeight="25.0" prefWidth="168.0" promptText="yyyy/mm/dd" />
          </children>
       </Pane>
