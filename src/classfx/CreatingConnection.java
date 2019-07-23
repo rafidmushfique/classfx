@@ -17,7 +17,6 @@ public class CreatingConnection {
     public static Connection con;
     public CreatingConnection() throws SQLException
     {
-         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classch?zeroDateTimeBehavior=convertToNull", "root", "");
-         // this for mhr75 connections with DB
+         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/classch?zeroDateTimeBehavior=convertToNull", "root", "root");
     }
 }
