@@ -39,7 +39,7 @@
             <Font name="Californian FB Bold" size="48.0" />
          </font>
       </Text>
-      <Button layoutX="225.0" layoutY="369.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="248.0" text="Notify Students">
+      <Button fx:id="notifyButton" layoutX="225.0" layoutY="369.0" mnemonicParsing="false" onAction="#notifyButtonAction" prefHeight="184.0" prefWidth="248.0" text="Notify Students">
          <font>
             <Font name="Arial Black" size="24.0" />
          </font>

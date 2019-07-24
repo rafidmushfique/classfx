@@ -39,38 +39,21 @@ import javafx.stage.Stage;
  */
 public class addmarksController implements Initializable {
 
-    @FXML
-    private Button back;
-    @FXML
     private TextField nameText;
-    @FXML
     private TextField genderText;
-    @FXML
     private TextField idText;
-    @FXML
     private TextField deptText;
-    @FXML
-    private Button marksUpdateButton;
-    @FXML
     private TableView<Student> studentTable;
-    @FXML
     private TableColumn<Student, Integer> studentId;
-    @FXML
     private TextField insertMarks;
-    @FXML
-    private Button insertMarksButton;
-    @FXML
     private TableView<ResultSubject> subjectTable;
-    @FXML
     private TableColumn<ResultSubject, String> subjectId;
-    @FXML
     private TableColumn<ResultSubject, String> courseId;
     private String resultSubjectId;
     private String resultCourseId;        
             
      private final ObservableList<ResultSubject> subjectData = FXCollections.observableArrayList();
     private final ObservableList<Student> studentData = FXCollections.observableArrayList();
-    
     @FXML
       public void backbutton(ActionEvent event) throws IOException
   {
@@ -194,7 +177,6 @@ public class addmarksController implements Initializable {
     
     
     
-    @FXML
     private void insertMarksButton(ActionEvent event) throws SQLException
     {
         try
@@ -235,7 +217,6 @@ public class addmarksController implements Initializable {
     if(value>=60) return 2.0;
     return 0.0;
     }
-    @FXML
     private void updateMarksButtonAction(ActionEvent event)
     {
         try{
