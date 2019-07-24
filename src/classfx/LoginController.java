@@ -34,6 +34,8 @@ import javafx.stage.Stage;
  */
 public class LoginController implements Initializable {
 
+    static int user_id;
+    
     @FXML
     private Button login;
     @FXML
@@ -103,10 +105,13 @@ public class LoginController implements Initializable {
     @FXML
     public void loginButton(ActionEvent event) {
         try {
+            
             boolean loginAction = true;
+            
             String password = (String) pass.getText();
             if (id.getText().equalsIgnoreCase("admin")) {
                 if (password.equals(this.password)) {
+                    
                     loginAction = false;
                     showNone();
                     Parent root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
@@ -117,6 +122,7 @@ public class LoginController implements Initializable {
                 }
             }
             if (loginAction) {
+                user_id=Integer.parseInt(id.getText());
                 int ID = Integer.parseInt(id.getText());
                 Statement st = con.createStatement();
                 ResultSet rs = st.executeQuery("select password,UserType,app from user where id='" + ID + "'");
@@ -144,6 +150,7 @@ public class LoginController implements Initializable {
                             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             window.setScene(nextScene);
                             window.show();
+                            
                         }
                         if (userType == 2) {
                             Parent root = FXMLLoader.load(getClass().getResource("Faculty.fxml"));
@@ -151,6 +158,7 @@ public class LoginController implements Initializable {
                             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             window.setScene(nextScene);
                             window.show();
+                            
                         }
                         if (userType == 3) {
                             Parent root = FXMLLoader.load(getClass().getResource("Accountent.fxml"));
@@ -158,6 +166,8 @@ public class LoginController implements Initializable {
                             Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
                             window.setScene(nextScene);
                             window.show();
+                            
+                            
                         }
                     }
                     if (approval == 2) {

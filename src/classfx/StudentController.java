@@ -7,7 +7,14 @@ package classfx;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +22,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -25,16 +38,37 @@ import javafx.stage.Stage;
  */
 public class StudentController implements Initializable {
 
+    Connection con=CreatingConnection.con;
+    public int semester=Classfx.semesterId;
+    ResultSet rs;
+    Statement st;
+    PreparedStatement pst;
+    static public int count;
+    static public int total;
+    
+    public int id=LoginController.user_id;
     @FXML
     private Button course;
     @FXML
     private Button bk;
-
+    @FXML
+    private TextField nametext;
+    @FXML
+    private TextField gendertext;
+    @FXML
+    private Label idtext;
+    @FXML
+    private Label deptext;
+    @FXML
+    private Label paymenttext;
+    @FXML
+    
     /**
      * Initializes the controller class.
      */
-    @FXML
-      public void handleButton1(ActionEvent event) throws IOException
+    
+    
+      public void addcourseButton(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("Course.fxml"));
        Scene nextScene = new Scene(root);
@@ -45,8 +79,14 @@ public class StudentController implements Initializable {
   }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        try {
+            // TODO
+            show();
+        } catch (SQLException ex) {
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }    
+    @FXML
      public void backbutton(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
@@ -56,5 +96,118 @@ public class StudentController implements Initializable {
              window.show();
       
   }
+     public void show() throws SQLException
+     {
+         
+         int credit=3;
+         String sql="select user.ID, user.Name, user.gender, student.dname,SUM(amount) As amount from ((user inner join student on user.ID = student.ID)inner join fees on student.ID = fees.std_id) where user.id=?;";
+    //  st=(Statement)con.createStatement();
+    
+       String sql2="SELECT COUNT(c_id) AS abc FROM takes WHERE semester_id=? and s_id=?";
+       
+       PreparedStatement st1=con.prepareStatement(sql2);
+      
+       st1.setInt(2,id);
+       st1.setInt(1,semester);
+       System.out.println(st1);
+       System.out.println(id);
+       System.out.println(semester);
+       ResultSet rsd=st1.executeQuery();
+     
+      System.out.println("this is count");
+       while (rsd.next())
+       {System.out.println("this is count");
+           count=rsd.getInt("abc");
+           System.out.println(count);
+           
+       }
+       rsd.close();
+       st1.close();
+       System.out.println(count);
+    pst=con.prepareStatement(sql);
+    pst.setInt(1,id);
+      rs=pst.executeQuery();
+      
+      while(rs.next())
+      {
+      nametext.setText(rs.getString("name"));
+      String studentid=rs.getString("id");
+      idtext.setText(studentid);
+      String gender;
+      if(rs.getString("gender").equals("1")){gender="Male";}
+      else{gender="female";}
+      gendertext.setText(gender);
+      deptext.setText(rs.getString("dname"));
+      int amount=Integer.parseInt(rs.getString("amount"));
+       
+       if(studentid.startsWith("16"))
+      {
+      total=(5000*credit*count);
+      }
+      else if(studentid.startsWith("17"))
+      {
+      total=(5500*credit*count);
+      }
+      else if(studentid.startsWith("18"))
+      {
+      total=(6000*credit*count);
+      }
+      else if(studentid.startsWith("19"))
+      {
+      total=(6500*credit*count);
+      }
+       System.out.print(total);
+       //String totala=""+total;
+       if(amount<total)
+       {
+           int due=total-amount;
+           String a="Due :"+due +" BDT";
+       paymenttext.setText(a);
+       }
+       else{paymenttext.setText("Paid");}
+       //paymenttext.setText(totala);
+      
+      
+      }
+      
+      
+     }
+     
+     public void updateButton(ActionEvent event)
+     {
+      try{
+        String a=nametext.getText();
+        String b=gendertext.getText();
+        System.out.println(a);
+        System.out.println(b);
+        String UpdateQuery="update user set name= ?,gender=? where id="+id;
+                 PreparedStatement   ps=con.prepareStatement(UpdateQuery);
+                    ps.setString(1, a);
+                    String qwe =gendertext.getText();
+                    int ew;
+                    if(qwe.equalsIgnoreCase("female"))ew=2;
+                    else ew=1;
+                    ps.setInt(2, ew);
+                    ps.executeUpdate();
+                    ps.close();
+                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
+     alert.setTitle("Information Dialog");
+     alert.setHeaderText(null);
+     alert.setContentText("Information Successfully Updated!");
+     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+     stage.getIcons().add(new Image("img/mechaaboo.png")); 
+     alert.showAndWait();
+        }
+        catch(Exception ex)
+        {
+              Alert alert = new Alert(Alert.AlertType.INFORMATION);
+     alert.setTitle("Information Dialog");
+     alert.setHeaderText(null);
+     alert.setContentText("Something Went wrong Information Was Not Updated!");
+     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+     stage.getIcons().add(new Image("img/mechaaboo.png")); 
+     alert.showAndWait();
+        }
+     }
     
 }

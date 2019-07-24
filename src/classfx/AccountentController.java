@@ -39,7 +39,8 @@ public class AccountentController implements Initializable {
    int semesterid=Classfx.semesterId;
    Statement st;
     ResultSet rs;
-   public int id;
+   public int id=LoginController.user_id;
+   
     @FXML
     private TextField nametext;
     @FXML
@@ -72,10 +73,13 @@ public class AccountentController implements Initializable {
            Logger.getLogger(AccountentController.class.getName()).log(Level.SEVERE, null, ex);
        }
     }    
+
+    
+    
     
     public void show() throws SQLException
     {
-        String sql="Select name,id,gender from user where UserType=3";
+        String sql="Select name,id,gender from user where id="+id;
         
        st = (Statement) con.createStatement();
        
@@ -173,6 +177,12 @@ public class AccountentController implements Initializable {
      stage.getIcons().add(new Image("img/mechaaboo.png")); 
      alert.showAndWait();
             } 
+            studentidtext.setText(null);
+            recipttext.setText(null);
+            datetext.setText(null);
+            banktext.setText(null);
+            totalamounttext.setText(null);
+            
         
     
     }
