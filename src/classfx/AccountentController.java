@@ -36,7 +36,7 @@ import javafx.stage.Stage;
 
 public class AccountentController implements Initializable {
    Connection con=CreatingConnection.con;
-   int semesterid=Classfx.semesterid;
+   int semesterid=Classfx.semesterId;
    Statement st;
     ResultSet rs;
    public int id;

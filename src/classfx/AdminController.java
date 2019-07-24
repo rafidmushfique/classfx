@@ -36,7 +36,9 @@ public class AdminController implements Initializable {
     private Button approvelist;
     @FXML
     private Button classschedule;
-
+    @FXML
+    private Button preAdvising;
+    
       public void studentinfo(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("StuInfo.fxml"));
@@ -46,6 +48,16 @@ public class AdminController implements Initializable {
              window.show();
       
   }
+    public void preAdvisingInfo(ActionEvent event) throws IOException
+  {
+       Parent root = FXMLLoader.load(getClass().getResource("preAdvising.fxml"));
+       Scene nextScene = new Scene(root);
+             Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+             window.setScene(nextScene);
+             window.show();
+      
+  }  
+      
           public void facultyinfo(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("FacultyInfo.fxml"));

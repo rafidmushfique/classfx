@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.AdminController">
    <children>
       <Pane layoutX="7.0" layoutY="8.0" prefHeight="584.0" prefWidth="683.0" style="-fx-background-color: white;">
          <children>
@@ -27,7 +27,8 @@
                   <Font name="Arial Bold" size="36.0" />
                </font>
             </Text>
-            <Button fx:id="classschedule" layoutX="237.0" layoutY="375.0" mnemonicParsing="false" onAction="#classschedule" prefHeight="91.0" prefWidth="210.0" text="Class Schedule" />
+            <Button fx:id="classschedule" layoutX="105.0" layoutY="374.0" mnemonicParsing="false" onAction="#classschedule" prefHeight="91.0" prefWidth="210.0" text="Class Schedule" />
+            <Button fx:id="preAdvising" layoutX="367.0" layoutY="374.0" mnemonicParsing="false" onAction="#preAdvisingInfo" prefHeight="91.0" prefWidth="210.0" text="Advsing Setups" />
          </children>
       </Pane>
    </children>

@@ -50,7 +50,7 @@
                   <TableColumn prefWidth="200.0" text="Grade" />
                </columns>
             </TableView>
-            <Button layoutX="580.0" layoutY="242.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Back" />
+            <Button fx:id="bk" layoutX="580.0" layoutY="242.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="25.0" prefWidth="67.0" text="Back" />
          </children>
       </Pane>
    </children>
