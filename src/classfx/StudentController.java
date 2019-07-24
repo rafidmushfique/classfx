@@ -27,10 +27,13 @@ public class StudentController implements Initializable {
 
     @FXML
     private Button course;
+    @FXML
+    private Button bk;
 
     /**
      * Initializes the controller class.
      */
+    @FXML
       public void handleButton1(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("Course.fxml"));
@@ -44,5 +47,14 @@ public class StudentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+     public void backbutton(ActionEvent event) throws IOException
+  {
+       Parent root = FXMLLoader.load(getClass().getResource("Login.fxml"));
+       Scene nextScene = new Scene(root);
+             Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+             window.setScene(nextScene);
+             window.show();
+      
+  }
     
 }

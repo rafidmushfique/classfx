@@ -30,6 +30,9 @@ public class FacultyController implements Initializable {
      */
     @FXML
     private Button newbt;
+    @FXML
+    private Button back;
+    @FXML
      public void newbb(ActionEvent event) throws IOException
   {
        Parent root = FXMLLoader.load(getClass().getResource("addmarks.fxml"));
@@ -44,5 +47,14 @@ public class FacultyController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+     public void backbutton(ActionEvent event) throws IOException
+  {
+       Parent root = FXMLLoader.load(getClass().getResource("Admin.fxml"));
+       Scene nextScene = new Scene(root);
+             Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+             window.setScene(nextScene);
+             window.show();
+      
+  }
     
 }

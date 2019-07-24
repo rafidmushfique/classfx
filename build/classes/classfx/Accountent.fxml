@@ -18,28 +18,28 @@
                </font>
             </Text>
             <Label layoutX="226.0" layoutY="93.0" prefHeight="23.0" prefWidth="37.0" text="Name:" />
-            <TextField layoutX="274.0" layoutY="92.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField fx:id="nametext" layoutX="274.0" layoutY="92.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="216.0" layoutY="128.0" prefHeight="23.0" prefWidth="47.0" text="Gender:" />
-            <TextField layoutX="274.0" layoutY="127.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField fx:id="gendertext" layoutX="274.0" layoutY="127.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="232.0" layoutY="165.0" prefHeight="23.0" prefWidth="26.0" text="ID:" />
-            <TextField layoutX="274.0" layoutY="164.0" prefHeight="25.0" prefWidth="168.0" />
-            <Button layoutX="594.0" layoutY="207.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Update" />
+            <TextField fx:id="idtext" layoutX="274.0" layoutY="164.0" prefHeight="25.0" prefWidth="168.0" />
+            <Button layoutX="594.0" layoutY="207.0" mnemonicParsing="false" onAction="#updateAction" prefHeight="36.0" prefWidth="72.0" text="Update" />
          </children>
       </Pane>
       <Pane layoutX="8.0" layoutY="297.0" opacity="0.96" prefHeight="289.0" prefWidth="680.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="37.0" layoutY="84.0" prefHeight="23.0" prefWidth="64.0" text="Student ID:" />
-            <TextField layoutX="114.0" layoutY="83.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField fx:id="studentidtext" layoutX="114.0" layoutY="83.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="423.0" layoutY="28.0" prefHeight="23.0" prefWidth="64.0" text="Recipt No:" />
-            <TextField layoutX="498.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField fx:id="recipttext" layoutX="498.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="225.0" layoutY="139.0" prefHeight="23.0" prefWidth="80.0" text="Total Amount:" />
-            <TextField layoutX="321.0" layoutY="138.0" prefHeight="25.0" prefWidth="168.0" />
-            <Button layoutX="225.0" layoutY="207.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Paid" />
+            <TextField fx:id="totalamounttext" layoutX="321.0" layoutY="138.0" prefHeight="25.0" prefWidth="168.0" />
+            <Button fx:id="paidbutton" layoutX="225.0" layoutY="207.0" mnemonicParsing="false" onAction="#paidButton" prefHeight="36.0" prefWidth="72.0" text="Paid" />
             <Label layoutX="51.0" layoutY="28.0" prefHeight="23.0" prefWidth="47.0" text="Bank:" />
-            <TextField layoutX="114.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" />
+            <TextField fx:id="banktext" layoutX="114.0" layoutY="27.0" prefHeight="25.0" prefWidth="168.0" />
             <Label layoutX="436.0" layoutY="83.0" prefHeight="23.0" prefWidth="37.0" text="Date:" />
-            <TextField layoutX="498.0" layoutY="82.0" prefHeight="25.0" prefWidth="168.0" />
-            <Button layoutX="419.0" layoutY="207.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Back" />
+            <Button fx:id="backbutton" layoutX="419.0" layoutY="207.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="72.0" text="Back" />
+            <TextField fx:id="datetext" layoutX="504.0" layoutY="82.0" prefHeight="25.0" prefWidth="168.0" promptText="yyyy/mm/dd" />
          </children>
       </Pane>
    </children>
