@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -116,13 +117,15 @@
          </columns>
       </TableView>
       <Label layoutX="43.0" layoutY="553.0" prefHeight="17.0" prefWidth="610.0" text="----------------------------------------------------------------------------------------------------------------------------" textFill="#f8f8f8" />
-      <Button fx:id="back" layoutX="260.0" layoutY="570.0" mnemonicParsing="false" onAction="#BackButtonAction" prefHeight="25.0" prefWidth="104.0" text="Back" />
-      <Button layoutX="386.0" layoutY="570.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="265.0" text="Generate Class Schedule ! " textFill="RED" />
+      <Button fx:id="back" layoutX="236.0" layoutY="569.0" mnemonicParsing="false" onAction="#BackButtonAction" prefHeight="25.0" prefWidth="104.0" text="Back" />
+      <Button fx:id="newGenerate" layoutX="528.0" layoutY="569.0" mnemonicParsing="false" onAction="#newGenerateButtonAction" prefHeight="25.0" prefWidth="164.0" text="Generate Class Schedule ! " textFill="RED" />
       <Label layoutX="47.0" layoutY="570.0" prefHeight="22.0" prefWidth="199.0" text="***Add Semester part first ! " textFill="WHITE">
          <font>
             <Font name="Bell MT Italic" size="18.0" />
          </font>
       </Label>
       <Button fx:id="refresh" layoutX="657.0" layoutY="4.0" mnemonicParsing="false" onAction="#RefreshButtonAction" prefHeight="25.0" prefWidth="35.0" />
+      <Button fx:id="oldGenerate" layoutX="352.0" layoutY="569.0" mnemonicParsing="false" onAction="#oldGenerateButtonAction" prefHeight="25.0" prefWidth="164.0" text="Old Class Schedule ! " textFill="RED" />
+      <ImageView fx:id="img" fitHeight="126.0" fitWidth="164.0" layoutX="301.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
