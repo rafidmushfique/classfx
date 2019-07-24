@@ -150,7 +150,7 @@ public class SignupController implements Initializable {
                     pre.setInt(1,Integer.parseInt(((id.getText()))));
                     pre.setString(2,name.getText());
                     pre.setString(3,dept.getText());
-                    TextInputDialog dialog = new TextInputDialog("walter");
+                    TextInputDialog dialog = new TextInputDialog("UB00000");
                     dialog.setTitle("Greetings!");
                     dialog.setHeaderText(name.getText()+" , Nice to meeet you");
                     dialog.setContentText("Please enter your consultation room number:");

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,6 +33,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -58,6 +60,15 @@ public class ClassScheduleController implements Initializable {
     private Button addRoom;
     @FXML
     private Button deleteRoom;
+    @FXML
+    private Button addMeeting;
+    @FXML
+    private Button deleteMeeting;
+    @FXML
+    private Button addCourse;
+    @FXML
+    private Button deleteCourse;
+    
 
     @FXML
     private TextField textSemesterId;
@@ -69,6 +80,19 @@ public class ClassScheduleController implements Initializable {
     private TextField textRoomNumber;
     @FXML
     private TextField textRoomCapacity;
+    @FXML 
+    private TextField textMeetingId;
+    @FXML
+    private TextField textMeetingTime;
+    @FXML
+    private TextField textCourseId;
+    @FXML
+    private TextField textCourseNumber;
+    @FXML
+    private TextField textCourseFacultyId;
+    @FXML
+    private TextField textCourseMaxNumberOfStudents;
+    
 
     @FXML
     private TableColumn<Semester, String> semesterId;
@@ -83,13 +107,34 @@ public class ClassScheduleController implements Initializable {
     private TableColumn<Room, String> roomCapacity;
 
     @FXML
+    private TableColumn<Meeting, String> meetingId;
+    @FXML
+    private TableColumn<Meeting,String>meetingTime;
+    
+    @FXML
+    private TableColumn<Course,String>courseId;
+    @FXML
+    private TableColumn<Course,String>courseNumber;
+    @FXML
+    private TableColumn<Course,Integer>courseFacultyId;
+    @FXML
+    private TableColumn<Course,Integer>courseMaxNumberOfStudents;
+    
+    @FXML
     private TableView semesterTable;
     @FXML
     private TableView roomTable;
-
+    @FXML
+    private TableView meetingTable;
+    @FXML
+    private TableView courseTable;
+    
     private final ObservableList<Semester> semesterData = FXCollections.observableArrayList();
     private final ObservableList<Room> roomData = FXCollections.observableArrayList();
-
+    private final ObservableList<Meeting> meetingData = FXCollections.observableArrayList();
+    private final ObservableList<Course> courseData = FXCollections.observableArrayList();
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -182,6 +227,8 @@ public class ClassScheduleController implements Initializable {
 
         } else {
             RoomTableShow();
+            MeetingTableShow();
+            CourseTableShow();
         }
     }
 
@@ -400,6 +447,358 @@ public class ClassScheduleController implements Initializable {
         String roomNumber = textRoomNumber.getText();
         String roomCapacity = textRoomCapacity.getText();
         if (roomNumber.equals("") || roomCapacity.equals("")) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+    private void MeetingTableShow() {
+
+        try {
+            meetingData.clear();
+            meetingTable.refresh();
+            MeetingStartup();
+            meetingId.setCellValueFactory(new PropertyValueFactory<>("meetingId"));
+            meetingTime.setCellValueFactory(new PropertyValueFactory<>("meetingTime"));
+            meetingTable.setItems(meetingData);
+            meetingTable.setRowFactory(tv -> {
+                TableRow<Meeting> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                        Meeting rowData = row.getItem();
+                        textMeetingId.setText("" + rowData.getMeetingId());
+                        textMeetingTime.setText("" + rowData.getMeetingTime());
+                    }
+                });
+                return row;
+            });
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
+    private void MeetingStartup() {
+        try {
+            String id = textSemesterId.getText();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select id,time from meetingtime where semester_id=" + id);
+            String[] Values = new String[2];
+            while (rs.next()) {
+                Values[1 - 1] = rs.getString("id");
+                Values[2 - 1] = rs.getString("time");
+                
+                meetingData.add(new Meeting((Values[0]), (Values[01])));
+            }
+            st.close();
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void AddMeetingButtonAction() throws SQLException {
+        System.out.println(MeetingInputsCheck());
+        if (MeetingInputsCheck()) {
+            String id = textSemesterId.getText();
+            if (!id.equals("")) {
+                PreparedStatement pre = con.prepareStatement("insert into meetingtime (id,time,semester_id) values(?,?,?)");
+                pre.setString(1, textMeetingId.getText());
+                pre.setString(2,(textMeetingTime.getText()));
+                pre.setInt(3, Integer.parseInt(textSemesterId.getText()));
+                int result = pre.executeUpdate();
+                if (result == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Adding meetingTime failed!");
+                    alert.setContentText("Recheck If you have written same meeting time id again!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Meeting time  Added Successfully!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Good day sir, New meeting table row created !");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("adding meeting time failed!");
+                alert.setContentText("Recheck If you have left semester id box left unanswered!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Adding semester failed!");
+            alert.setContentText("Recheck If you have left something unanswered!");
+            alert.showAndWait();
+        }
+        MeetingTableShow();
+        cleanMeetingInfos();
+    }
+    
+    
+     @FXML
+    private void DeleteMeetingButtonAction(){
+        try{
+        if (MeetingInputsCheck()) {
+            String id = textMeetingId.getText();
+            if (!id.equals("")) {
+                PreparedStatement pre = con.prepareStatement("delete from  meetingtime where id=?");
+                pre.setString(1, id);
+                int result = pre.executeUpdate();
+                if (result == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Deleting meeting failed!");
+                    alert.setContentText("Recheck the infos again!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Meetingtime Deleted Successfully!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Good day sir, New meetingtime table row deleted !");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Deleting Meeting info failed!");
+                alert.setContentText("Recheck If you have left meeitng id box left unanswered!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Deleting Meeting failed!");
+            alert.setContentText("Recheck If you have left something unanswered!");
+            alert.showAndWait();
+        }
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+            alert.setHeaderText("Adding Meeting failed!");
+            alert.setContentText("This meeting time has been used for child constraints ! Remove those first to update this.");
+            alert.showAndWait();
+        }
+        RoomTableShow();
+        cleanRoomInfos();
+    }
+    private void cleanMeetingInfos()
+    {
+    textMeetingId.setText("");
+    textMeetingTime.setText("");
+    }
+    private boolean MeetingInputsCheck() {
+        String id = textMeetingId.getText();
+        String time = textMeetingTime.getText();
+        if (id.equals("") || time.equals("")) {
+            return false;
+        }
+        return true;
+    }
+    
+    private void CourseTableShow() {
+
+        try {
+            courseData.clear();
+            courseTable.refresh();
+            CourseStartup();
+            courseId.setCellValueFactory(new PropertyValueFactory<>("courseId"));
+            courseNumber.setCellValueFactory(new PropertyValueFactory<>("courseNumber"));
+            courseFacultyId.setCellValueFactory(new PropertyValueFactory<>("courseFacultyId"));
+            courseMaxNumberOfStudents.setCellValueFactory(new PropertyValueFactory<>("courseMaxNumberOfStudents"));
+            courseTable.setItems(courseData);
+            courseTable.setRowFactory(tv -> {
+                TableRow<Course> row = new TableRow<>();
+                row.setOnMouseClicked(event -> {
+                    if (event.getClickCount() == 1 && (!row.isEmpty())) {
+                        Course rowData = row.getItem();
+                        textCourseId.setText("" + rowData.getCourseId());
+                        textCourseNumber.setText("" + rowData.getCourseNumber());
+                        textCourseFacultyId.setText("" + rowData.getCourseFacultyId());
+                        textCourseMaxNumberOfStudents.setText("" + rowData.getCourseMaxNumberOfStudents());
+                    }
+                });
+                return row;
+            });
+        } catch (Exception ex) {
+            System.out.println("kchur");
+            ex.printStackTrace();
+        }
+    }
+
+    private void CourseStartup() {
+        try {
+            String id = textSemesterId.getText();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("select course_id,number,maxNumberOfStudents,instructorId from course where semester_id="+textSemesterId.getText());
+
+            while (rs.next()) {
+                String[] Values= new String[4];
+                Values[0] = rs.getString("course_id");
+                Values[1] = (rs.getString("number"));
+                Values[2] = rs.getString("instructorId");
+                Values[3] = (rs.getString("maxNumberOfStudents"));
+                courseData.add(new Course((Values[0]), (Values[01]),Integer.parseInt(Values[2]),Integer.parseInt(Values[3])));
+            }
+            st.close();
+            rs.close();
+
+        } catch (Exception e) {
+            System.out.println("kchur 2 ");
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void AddCourseButtonAction() throws SQLException {
+        System.out.println(CourseInputsCheck());
+        if (CourseInputsCheck()) {
+            String id = textSemesterId.getText();
+            if (!id.equals("")) {
+                PreparedStatement pre = con.prepareStatement("insert into course (course_id,number,maxNumberOfStudents,instructorId,semester_id,dname,credit,course_details) values(?,?,?,?,?,?,?,?)");
+                
+                pre.setString(1, textCourseId.getText());
+                pre.setString(2,(textCourseNumber.getText()));
+                pre.setInt(3, Integer.parseInt(textCourseMaxNumberOfStudents.getText()));
+                pre.setInt(4, Integer.parseInt(textCourseFacultyId.getText()));
+                pre.setString(5,(textSemesterId.getText()));
+                TextInputDialog dialog = new TextInputDialog("department");
+                dialog.setTitle("Greetings!");
+                dialog.setHeaderText(null);
+                dialog.setContentText("This course Department:");
+                Optional<String> result = dialog.showAndWait();
+                String roomNumber="";
+                if (result.isPresent()) {
+                    roomNumber = result.get();
+                }
+                pre.setString(6,roomNumber);
+                dialog = new TextInputDialog("credit");
+                dialog.setTitle("Course Credit!");
+                dialog.setHeaderText(null);
+                dialog.setContentText("Please this course Credit No:");
+                result = dialog.showAndWait();
+                roomNumber="";
+                if (result.isPresent()) {
+                    roomNumber = result.get();
+                }
+                pre.setDouble(7, Double.parseDouble(roomNumber));
+                
+                dialog = new TextInputDialog("course details");
+                dialog.setTitle("Course Details!");
+                dialog.setHeaderText(null);
+                dialog.setContentText(" course details:");
+                result = dialog.showAndWait();
+                roomNumber="";
+                if (result.isPresent()) {
+                    roomNumber = result.get();
+                }
+                pre.setString(8, (roomNumber));
+                int results = pre.executeUpdate();
+                if (results == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Adding course failed!");
+                    alert.setContentText("Recheck If you have written same course id again!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Course  Added Successfully!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Good day sir, New course added in the row !");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("adding course failed!");
+                alert.setContentText("Recheck If you have left semester id box left unanswered!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Course semester failed!");
+            alert.setContentText("Recheck If you have left something unanswered!");
+            alert.showAndWait();
+        }
+        CourseTableShow();
+        cleanCourseInfos();
+    }
+    
+    
+     @FXML
+    private void DeleteCourseButtonAction(){
+        try{
+        if (CourseInputsCheck()) {
+            String id = textCourseNumber.getText();
+            if (!id.equals("")) {
+                PreparedStatement pre = con.prepareStatement("delete from  course where number=?");
+                pre.setString(1, id);
+                int result = pre.executeUpdate();
+                if (result == 0) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Dialog");
+                    alert.setHeaderText("Deleting course failed!");
+                    alert.setContentText("Recheck the infos again!");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Course Deleted Successfully!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Good day sir, New course row deleted !");
+                    alert.showAndWait();
+                }
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Dialog");
+                alert.setHeaderText("Deleting Course info failed!");
+                alert.setContentText("Recheck If you have left couse number box left unanswered!");
+                alert.showAndWait();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error Dialog");
+            alert.setHeaderText("Deleting Course failed!");
+            alert.setContentText("Recheck If you have left something unanswered!");
+            alert.showAndWait();
+        }
+        }
+        catch(Exception ex)
+        {
+            System.out.println(ex);
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error Dialog");
+            alert.setHeaderText("Adding course failed!");
+            alert.setContentText("This course has been used for child constraints ! Remove those first to update this.");
+            alert.showAndWait();
+        }
+        CourseTableShow();
+        cleanCourseInfos();
+    }
+    
+    private void cleanCourseInfos()
+    {
+    textCourseId.setText("");
+    textCourseNumber.setText("");
+    textCourseFacultyId.setText("");
+    textCourseMaxNumberOfStudents.setText("");
+    
+    }
+    private boolean CourseInputsCheck() {
+        String id = textCourseId.getText();
+        String numb = textCourseNumber.getText();
+        String facultyId = textCourseFacultyId.getText();
+        String amount = textCourseMaxNumberOfStudents.getText();
+        
+        if (id.equals("") || numb.equals("")||facultyId.equals("")||amount.equals("")) {
             return false;
         }
         return true;
