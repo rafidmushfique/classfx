@@ -39,14 +39,19 @@ import javafx.stage.Stage;
 public class StudentController implements Initializable {
 
     Connection con=CreatingConnection.con;
-    public int semester=Classfx.semesterId;
+    public int maxCredit=Classfx.maxCredit;
+    
+    public int minCredit=Classfx.minCredit;
+    public boolean pretime=Classfx.preTime;
+    public int credit=ResultController.counter;
+     public int semester=Classfx.semesterId;
     ResultSet rs;
     Statement st;
     PreparedStatement pst;
     static public int count;
     static public int total;
     
-    public int id=LoginController.user_id;
+    static public int id=LoginController.user_id;
     @FXML
     private Button course;
     @FXML
@@ -70,20 +75,57 @@ public class StudentController implements Initializable {
     
       public void addcourseButton(ActionEvent event) throws IOException
   {
-       Parent root = FXMLLoader.load(getClass().getResource("Course.fxml"));
+      System.out.println(maxCredit);
+      System.out.println(credit);
+      System.out.println(minCredit);
+      System.out.println(pretime);
+      if(pretime && minCredit<=credit && credit<=maxCredit)
+      {
+            
+                
+                Parent root = FXMLLoader.load(getClass().getResource("Course.fxml"));
+                Scene nextScene = new Scene(root);
+                Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
+                window.setScene(nextScene);
+                window.show();
+            
+          
+      }
+      else
+      {
+      Alert alert = new Alert(Alert.AlertType.INFORMATION);
+     alert.setTitle("Information Dialog");
+     alert.setHeaderText(null);
+     alert.setContentText("Wait For You Designated TimeSlot!");
+     Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+     stage.getIcons().add(new Image("img/mechaaboo.png")); 
+     alert.showAndWait();
+      }
+ 
+  }
+         public void viewresultButton(ActionEvent event) 
+  {
+       Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getResource("Result.fxml"));
+       
        Scene nextScene = new Scene(root);
              Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
              window.setScene(nextScene);
              window.show();
-      
+       } catch (IOException ex) {
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
   }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
             show();
+            paymentInfo();
         } catch (SQLException ex) {
-            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        System.out.println(ex.fillInStackTrace());
         }
     }    
     @FXML
@@ -99,11 +141,11 @@ public class StudentController implements Initializable {
      public void show() throws SQLException
      {
          
-         int credit=3;
-         String sql="select user.ID, user.Name, user.gender, student.dname,SUM(amount) As amount from ((user inner join student on user.ID = student.ID)inner join fees on student.ID = fees.std_id) where user.id=?;";
+         
+        // String sql="select user.ID, user.Name, user.gender, student.dname,SUM(amount) As amount from ((user inner join student on user.ID = student.ID)inner join fees on student.ID = fees.std_id) where user.id=?;";
     //  st=(Statement)con.createStatement();
-    
-       String sql2="SELECT COUNT(c_id) AS abc FROM takes WHERE semester_id=? and s_id=?";
+    String sql="SELECT user.ID,user.Name,user.gender,student.dname FROM user INNER JOIN student ON user.ID=student.Id WHERE user.ID=?";
+       String sql2="SELECT COUNT(sub_id) AS abc FROM stu_takes WHERE semester_id=? and stu_id=?";
        
        PreparedStatement st1=con.prepareStatement(sql2);
       
@@ -138,7 +180,27 @@ public class StudentController implements Initializable {
       else{gender="female";}
       gendertext.setText(gender);
       deptext.setText(rs.getString("dname"));
-      int amount=Integer.parseInt(rs.getString("amount"));
+      
+       //paymenttext.setText(totala);
+      
+      
+      }
+      
+      
+     }
+     public void paymentInfo()
+     {
+         int credit=3;
+         String studentid=""+id;
+         String sql="select SUM(amount) as amount from fees where std_id=?";
+        try {
+            PreparedStatement st=con.prepareStatement(sql);
+           st.setInt(1,id);
+        ResultSet rs=st.executeQuery();
+         while(rs.next())
+         {
+         
+         int amount=rs.getInt("amount");
        
        if(studentid.startsWith("16"))
       {
@@ -156,7 +218,7 @@ public class StudentController implements Initializable {
       {
       total=(6500*credit*count);
       }
-       System.out.print(total);
+     //  System.out.print(total);
        //String totala=""+total;
        if(amount<total)
        {
@@ -165,12 +227,11 @@ public class StudentController implements Initializable {
        paymenttext.setText(a);
        }
        else{paymenttext.setText("Paid");}
-       //paymenttext.setText(totala);
-      
-      
-      }
-      
-      
+         }
+         
+     } catch (SQLException ex) {
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
      }
      
      public void updateButton(ActionEvent event)
