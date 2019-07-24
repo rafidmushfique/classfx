@@ -34,7 +34,7 @@ import javafx.stage.Stage;
  */
 public class LoginController implements Initializable {
 
-    static int user_id;
+    public static int user_id;
     
     @FXML
     private Button login;

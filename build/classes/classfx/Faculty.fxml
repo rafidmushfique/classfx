@@ -8,56 +8,46 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.FacultyController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="696.0" style="-fx-background-color: rgb(7,96,169);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classfx.FacultyController">
    <children>
-      <Pane layoutX="16.0" layoutY="53.0" opacity="0.79" prefHeight="229.0" prefWidth="665.0" style="-fx-background-color: white;">
+      <Pane layoutX="15.0" layoutY="131.0" prefHeight="229.0" prefWidth="665.0" style="-fx-background-color: white;">
          <children>
             <Label layoutX="68.0" layoutY="77.0" prefHeight="23.0" prefWidth="44.0" text="Name:" />
-            <TextField layoutX="112.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="nameText" layoutX="112.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
             <Label layoutX="378.0" layoutY="77.0" prefHeight="23.0" prefWidth="44.0" text="Gender:" />
-            <TextField layoutX="422.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="genderText" layoutX="422.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
             <Label layoutX="79.0" layoutY="128.0" prefHeight="23.0" prefWidth="22.0" text="ID:" />
-            <TextField layoutX="112.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
+            <TextField fx:id="idText" layoutX="112.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
             <Label layoutX="352.0" layoutY="128.0" prefHeight="23.0" prefWidth="74.0" text="Department:" />
-            <TextField layoutX="422.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
-            <Button layoutX="552.0" layoutY="185.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Update" />
-            <Text layoutX="15.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" wrappingWidth="128.99999618530273">
+            <TextField fx:id="deptText" layoutX="422.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
+            <Button fx:id="updateInfo" layoutX="552.0" layoutY="185.0" mnemonicParsing="false" onAction="#updateButton" prefHeight="25.0" prefWidth="67.0" text="Update" />
+            <Text layoutX="68.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Information" wrappingWidth="183.99999618530273">
                <font>
-                  <Font name="Calibri Italic" size="24.0" />
+                  <Font name="Calibri Italic" size="36.0" />
                </font>
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="16.0" layoutY="300.0" opacity="0.79" prefHeight="229.0" prefWidth="665.0" style="-fx-background-color: white;">
-         <children>
-            <Label layoutX="45.0" layoutY="77.0" prefHeight="23.0" prefWidth="67.0" text="Course_id:" />
-            <TextField layoutX="112.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
-            <Label layoutX="341.0" layoutY="77.0" prefHeight="23.0" prefWidth="81.0" text="Course_details:" />
-            <TextField layoutX="422.0" layoutY="76.0" prefHeight="25.0" prefWidth="163.0" />
-            <Label layoutX="57.0" layoutY="128.0" prefHeight="23.0" prefWidth="44.0" text="Credit:" />
-            <TextField layoutX="112.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
-            <Label layoutX="352.0" layoutY="128.0" prefHeight="23.0" prefWidth="74.0" text="Department:" />
-            <TextField layoutX="422.0" layoutY="127.0" prefHeight="25.0" prefWidth="163.0" />
-            <Button layoutX="173.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Add" />
-            <Button layoutX="251.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Update" />
-            <Button layoutX="333.0" layoutY="190.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" text="Delete" />
-            <Text layoutX="15.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Course Panel" wrappingWidth="128.99999618530273">
-               <font>
-                  <Font name="Calibri Italic" size="24.0" />
-               </font>
-            </Text>
-            <Button fx:id="newbt" layoutX="412.0" layoutY="190.0" mnemonicParsing="false" onAction="#newbb" prefHeight="25.0" prefWidth="81.0" text="Add Marks" />
-            <Button fx:id="back" layoutX="585.0" layoutY="190.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="25.0" prefWidth="67.0" text="Back" />
-         </children>
-      </Pane>
-      <Pane layoutX="205.0" opacity="0.79" prefHeight="35.0" prefWidth="230.0" style="-fx-background-color: white;">
-         <children>
-            <Text layoutX="4.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fauclty Panel" wrappingWidth="221.99999618530273">
-               <font>
-                  <Font name="Californian FB Bold" size="36.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
+      <Button fx:id="back" layoutX="311.0" layoutY="561.0" mnemonicParsing="false" onAction="#backbutton" prefHeight="25.0" prefWidth="67.0" text="Back" />
+      <Button fx:id="newbt" layoutX="15.0" layoutY="369.0" mnemonicParsing="false" onAction="#newbb" prefHeight="184.0" prefWidth="184.0" text="Add Marks">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="196.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fauclty Panel" wrappingWidth="305.99999618530273">
+         <font>
+            <Font name="Californian FB Bold" size="48.0" />
+         </font>
+      </Text>
+      <Button layoutX="225.0" layoutY="369.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="248.0" text="Notify Students">
+         <font>
+            <Font name="Arial Black" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="498.0" layoutY="369.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="184.0" text=" Attendance">
+         <font>
+            <Font name="Arial Black" size="22.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
