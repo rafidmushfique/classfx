@@ -115,7 +115,7 @@ public class Driver {
     stmt.setInt(6, 1);
     stmt.setString(7,data.getRooms().get(roomIndex).getNumber());
     stmt.setString(8,x.getMeetingTime().getTime() );
-    stmt.setString(9, courseDetails);
+    stmt.setString(9, courseDetails); 
     stmt.executeUpdate();
     stmt.close();
     System.out.println(counter + " records inserted");

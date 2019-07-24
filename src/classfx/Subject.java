@@ -25,7 +25,6 @@ public class Subject {
         roomNo = new SimpleStringProperty(room);
         subjectTime = new SimpleStringProperty(subTime);
     }
-
     
     public String getSubjectTime() {
         return subjectTime.get();

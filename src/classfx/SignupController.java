@@ -173,15 +173,12 @@ public class SignupController implements Initializable {
                      alert.setTitle("Sign Up Successful!");
                      alert.setHeaderText(null);
                      alert.setContentText("Good day mate sir, Now wait for confirmation from admin");
-
                      alert.showAndWait();
-               
                     showNone();
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
                showNone();
-                System.out.println("good work buddy");
             }
            
             waitingGif.setDisable(false);
