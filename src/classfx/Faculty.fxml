@@ -44,7 +44,7 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Button>
-      <Button layoutX="498.0" layoutY="369.0" mnemonicParsing="false" prefHeight="184.0" prefWidth="184.0" text=" Attendance">
+      <Button layoutX="498.0" layoutY="369.0" mnemonicParsing="false" onAction="#attendanceButtonAction" prefHeight="184.0" prefWidth="184.0" text=" Attendance">
          <font>
             <Font name="Arial Black" size="22.0" />
          </font>

@@ -60,7 +60,14 @@ public class FacultyController implements Initializable {
         window.setScene(nextScene);
         window.show();
     }
-    
+     @FXML
+    public void attendanceButtonAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("Attendance.fxml"));
+        Scene nextScene = new Scene(root);
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        window.setScene(nextScene);
+        window.show();
+    }
     
     @FXML
     public void newbb(ActionEvent event) throws IOException {
