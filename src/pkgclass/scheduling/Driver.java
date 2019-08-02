@@ -18,12 +18,12 @@ public class Driver {
     public static final double CROSSOVER_RATE =0.9;
     public static final int TOURNAMENT_SELECTION_SIZE = 3;
     public static final int NUMB_OF_ELITE_SCHEDULES =1;
-    public static HashMap <String,Integer>sectionNoOfCourse =new  HashMap <String,Integer>();
+    private HashMap <String,Integer>sectionNoOfCourse =new  HashMap <String,Integer>();
     private Data data;
     private int classNumb=1;
     static int generationNumber =0;
     private int scheduleNumber=0;
-    private static int counter =0;
+    private int counter =0;
     public static void main (String[]args)throws Exception
     {
         Driver driver =new Driver();
@@ -45,6 +45,7 @@ public class Driver {
     public void geneticAlgoExecute(int id) throws Exception
     {
         this.id=id;
+        System.out.println("id  "+id);
         Driver driver =new Driver();
         driver.data= new Data();
         driver.printAvailableData();
@@ -67,12 +68,22 @@ public class Driver {
        try
        {
        Statement st = Data.con.createStatement();
-       String sql="delete from subject";
+       String sql="delete from subject where semesterId="+id;
        st.executeUpdate(sql);
+       st.close();
+       String sql2="select count(*)as count from subject";
+       PreparedStatement pst=Data.con.prepareStatement(sql2);
+       ResultSet rs= pst.executeQuery();
+       
+                            while(rs.next())
+                            {
+                            counter= Integer.parseInt(rs.getString("count"));
+                            }
+       System.out.println(counter +"----------->");
        }
        catch(Exception e)
        {
-       
+       e.printStackTrace();
        }
         ArrayList<Class> classes = schedule.getClasses();
         classes.forEach(x->
@@ -96,7 +107,7 @@ public class Driver {
     
     if(sectionNoOfCourse.containsKey(x.getCourse().getNumber()))
     {
-        System.out.println("hola buddy");
+       // System.out.println("hola buddy");
     sectionNumbers=sectionNoOfCourse.get(x.getCourse().getNumber())+1;
     sectionNoOfCourse.replace(x.getCourse().getNumber(), sectionNoOfCourse.get(x.getCourse().getNumber()), sectionNumbers);
     }
@@ -112,7 +123,7 @@ public class Driver {
     stmt.setInt(3,sectionNumbers);
     stmt.setInt(4,Integer.parseInt(data.getInstructors().get(instructorIndex).getId()));
     stmt.setString(5, data.getDept().get(majorIndex).getName());
-    stmt.setInt(6, 1);
+    stmt.setInt(6, id);
     stmt.setString(7,data.getRooms().get(roomIndex).getNumber());
     stmt.setString(8,x.getMeetingTime().getTime() );
     stmt.setString(9, courseDetails); 

@@ -43,7 +43,7 @@ public class StudentController implements Initializable {
     
     public int minCredit=Classfx.minCredit;
     public boolean pretime=Classfx.preTime;
-    public int credit=ResultController.counter;
+    public int credit;
      public int semester=Classfx.semesterId;
     ResultSet rs;
     Statement st;
@@ -75,10 +75,6 @@ public class StudentController implements Initializable {
     
       public void addcourseButton(ActionEvent event) throws IOException
   {
-      System.out.println(maxCredit);
-      System.out.println(credit);
-      System.out.println(minCredit);
-      System.out.println(pretime);
       if(pretime && minCredit<=credit && credit<=maxCredit)
       {
             
@@ -121,6 +117,14 @@ public class StudentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             // TODO
+            Statement st= CreatingConnection.con.createStatement();
+                        ResultSet rs= st.executeQuery("select count(*)as count from result where std_id='"+id+"'");
+                        while(rs.next())
+                        {
+                            credit=Integer.parseInt(rs.getString("count"));
+                        }
+                        st.close();
+                        rs.close();
             show();
             paymentInfo();
         } catch (SQLException ex) {
@@ -145,27 +149,21 @@ public class StudentController implements Initializable {
         // String sql="select user.ID, user.Name, user.gender, student.dname,SUM(amount) As amount from ((user inner join student on user.ID = student.ID)inner join fees on student.ID = fees.std_id) where user.id=?;";
     //  st=(Statement)con.createStatement();
     String sql="SELECT user.ID,user.Name,user.gender,student.dname FROM user INNER JOIN student ON user.ID=student.Id WHERE user.ID=?";
-       String sql2="SELECT COUNT(sub_id) AS abc FROM stu_takes WHERE semester_id=? and stu_id=?";
+       String sql2="SELECT COUNT(distinct sub_id) AS abc FROM stu_takes WHERE semester_id=? and stu_id=?";
        
        PreparedStatement st1=con.prepareStatement(sql2);
       
        st1.setInt(2,id);
        st1.setInt(1,semester);
-       System.out.println(st1);
-       System.out.println(id);
-       System.out.println(semester);
        ResultSet rsd=st1.executeQuery();
      
-      System.out.println("this is count");
        while (rsd.next())
-       {System.out.println("this is count");
+       {
            count=rsd.getInt("abc");
-           System.out.println(count);
            
        }
        rsd.close();
        st1.close();
-       System.out.println(count);
     pst=con.prepareStatement(sql);
     pst.setInt(1,id);
       rs=pst.executeQuery();
@@ -181,7 +179,6 @@ public class StudentController implements Initializable {
       gendertext.setText(gender);
       deptext.setText(rs.getString("dname"));
       
-       //paymenttext.setText(totala);
       
       
       }
@@ -192,7 +189,7 @@ public class StudentController implements Initializable {
      {
          int credit=3;
          String studentid=""+id;
-         String sql="select SUM(amount) as amount from fees where std_id=?";
+         String sql="select SUM(amount) as amount from fee where std_id=? and semester_id="+Classfx.semesterId;
         try {
             PreparedStatement st=con.prepareStatement(sql);
            st.setInt(1,id);
@@ -218,8 +215,6 @@ public class StudentController implements Initializable {
       {
       total=(6500*credit*count);
       }
-     //  System.out.print(total);
-       //String totala=""+total;
        if(amount<total)
        {
            int due=total-amount;
@@ -239,8 +234,6 @@ public class StudentController implements Initializable {
       try{
         String a=nametext.getText();
         String b=gendertext.getText();
-        System.out.println(a);
-        System.out.println(b);
         String UpdateQuery="update user set name= ?,gender=? where id="+id;
                  PreparedStatement   ps=con.prepareStatement(UpdateQuery);
                     ps.setString(1, a);

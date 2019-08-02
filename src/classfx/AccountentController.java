@@ -103,8 +103,6 @@ public class AccountentController implements Initializable {
         try{
         String a=nametext.getText();
         String b=gendertext.getText();
-        System.out.println(a);
-        System.out.println(b);
         String UpdateQuery="update user set name= ?,gender=? where id="+id;
                  PreparedStatement   ps=con.prepareStatement(UpdateQuery);
                     ps.setString(1, a);
@@ -141,7 +139,7 @@ public class AccountentController implements Initializable {
      
         
             try {
-                PreparedStatement pre =con.prepareStatement("insert into fees (std_id,acc_id,Recipt_no,Bank_name,Date,Amount,semester_id) values(?,?,?,?,?,?,? )");
+                PreparedStatement pre =con.prepareStatement("insert into fee (std_id,acc_id,Recipt_no,Bank_name,Date,amount,semester_id) values(?,?,?,?,?,?,? )");
               
                 pre.setInt(1,Integer.parseInt( studentidtext.getText()));
               
@@ -168,7 +166,7 @@ public class AccountentController implements Initializable {
      stage.getIcons().add(new Image("img/mechaaboo.png")); 
      alert.showAndWait();
             } catch (Exception ex) {
-                //System.out.println(ex.fillInStackTrace());
+                System.out.println(ex.fillInStackTrace());
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
      alert.setTitle("Information Dialog");
      alert.setHeaderText(null);

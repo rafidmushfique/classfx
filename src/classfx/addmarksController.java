@@ -39,21 +39,37 @@ import javafx.stage.Stage;
  */
 public class addmarksController implements Initializable {
 
+    @FXML
     private TextField nameText;
+    @FXML
     private TextField genderText;
+    @FXML
     private TextField idText;
+    @FXML
     private TextField deptText;
+    @FXML
     private TableView<Student> studentTable;
+    @FXML
     private TableColumn<Student, Integer> studentId;
+    @FXML
     private TextField insertMarks;
+    @FXML
     private TableView<ResultSubject> subjectTable;
+    @FXML
     private TableColumn<ResultSubject, String> subjectId;
+    @FXML
     private TableColumn<ResultSubject, String> courseId;
     private String resultSubjectId;
     private String resultCourseId;        
             
      private final ObservableList<ResultSubject> subjectData = FXCollections.observableArrayList();
     private final ObservableList<Student> studentData = FXCollections.observableArrayList();
+    @FXML
+    private Button marksUpdateButton;
+    @FXML
+    private Button insertMarksButton;
+    @FXML
+    private Button back;
     @FXML
       public void backbutton(ActionEvent event) throws IOException
   {
@@ -143,7 +159,7 @@ public class addmarksController implements Initializable {
     private void StudentStartup() {
         try {
   
-              String sql="SELECT user.name,user.id,user.gender,Student.dname FROM user inner join  Student on user.id=student.id inner join stu_takes on user.id = stu_takes.stu_id where stu_takes.sub_id='"+resultSubjectId+"' and stu_takes.semester_id="+Classfx.semesterId;
+              String sql="SELECT Distinct user.name,user.id,user.gender,Student.dname FROM user inner join  Student on user.id=student.id inner join stu_takes on user.id = stu_takes.stu_id where stu_takes.sub_id='"+resultSubjectId+"' and stu_takes.semester_id="+Classfx.semesterId;
          ResultSet rs;
         Statement st= CreatingConnection.con.createStatement();
             rs=st.executeQuery(sql);
@@ -177,6 +193,7 @@ public class addmarksController implements Initializable {
     
     
     
+    @FXML
     private void insertMarksButton(ActionEvent event) throws SQLException
     {
         try
@@ -217,10 +234,11 @@ public class addmarksController implements Initializable {
     if(value>=60) return 2.0;
     return 0.0;
     }
+    @FXML
     private void updateMarksButtonAction(ActionEvent event)
     {
         try{
-           // System.out.println("bhao");
+           
     String UpdateQuery="update result set gpa=? where std_id=? and c_id= ? and semesterId=? and f_id=?";
                  PreparedStatement   ps=CreatingConnection.con.prepareStatement(UpdateQuery);
                     ps.setDouble(1,grade(Integer.parseInt(insertMarks.getText())));

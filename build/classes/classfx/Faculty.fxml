@@ -34,7 +34,7 @@
             <Font name="Arial Black" size="24.0" />
          </font>
       </Button>
-      <Text fill="WHITE" layoutX="196.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fauclty Panel" wrappingWidth="305.99999618530273">
+      <Text fill="WHITE" layoutX="196.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faculty Panel" wrappingWidth="305.99999618530273">
          <font>
             <Font name="Californian FB Bold" size="48.0" />
          </font>

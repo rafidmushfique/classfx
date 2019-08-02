@@ -145,7 +145,7 @@ public class ClassScheduleController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          img.setImage(new Image(this.getClass().getResource("classchedule.gif").toExternalForm()));
-         img.setVisible(true);
+         img.setVisible(false);
         SemesterTableShow();
     }
 
@@ -811,9 +811,8 @@ public class ClassScheduleController implements Initializable {
         if (!id.equals("")) {
             Driver driver = new Driver();
             driver.geneticAlgoExecute(Integer.parseInt(id));
-            
             Parent root = FXMLLoader.load(getClass().getResource("generatedClassSchedule.fxml"));
-       Scene nextScene = new Scene(root);
+            Scene nextScene = new Scene(root);
              Stage window= (Stage) ((Node) event.getSource()).getScene().getWindow() ;
              window.setScene(nextScene);
              window.show();

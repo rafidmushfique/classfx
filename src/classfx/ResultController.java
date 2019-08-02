@@ -43,7 +43,7 @@ public class ResultController implements Initializable {
         
         double doublevalue;
         double totalcredit=0.0;
-        static int counter;
+        private int counter;
         int integervalue[]=new int[2];
         double cgpa;
     
@@ -81,8 +81,8 @@ public class ResultController implements Initializable {
     public void start()
     {
         
-     String sql="SELECT result.c_id,result.gpa,result.semester_id,course.credit FROM result INNER JOIN course ON result.c_id=course.course_id WHERE std_id="+id;
-     System.out.println(sql);
+     String sql="SELECT distinct result.c_id,result.gpa,result.semesterId,course.credit FROM result INNER JOIN course ON result.c_id=course.course_id WHERE std_id="+id;
+     //System.out.println(sql);
         try {
             Statement st= (Statement)con.createStatement();
             ResultSet rs=st.executeQuery(sql);
@@ -91,9 +91,10 @@ public class ResultController implements Initializable {
             stringvalue=rs.getString("c_id");
             doublevalue=rs.getDouble("gpa");
             integervalue[0]=rs.getInt("credit");
-            integervalue[1]=rs.getInt("semester_id");
+            integervalue[1]=rs.getInt("semesterId");
              totalcredit+=integervalue[0]*doublevalue;
              counter+=integervalue[0];
+             System.out.println( totalcredit+" <----> "+counter); 
             data.add(new resulttable(stringvalue,doublevalue,(integervalue[0]),(integervalue[1])));
             }
              rs.close();
@@ -119,6 +120,7 @@ public class ResultController implements Initializable {
    
     public void cgpaCount()
     {
+        System.out.println( totalcredit+" <--!!!!--> "+counter); 
     cgpa= totalcredit/counter;
     String cg=cgpa+"";
     cgpatext.setText(cg);

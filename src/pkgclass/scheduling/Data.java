@@ -66,7 +66,7 @@ public class Data {
 
     public Data initialize() throws Exception {
         Statement st = con.createStatement();
-        ResultSet rs = st.executeQuery("select numb,seatingCapacity from room");
+        ResultSet rs = st.executeQuery("select numb,seatingCapacity from room where semester_id="+Driver.id);
         while (rs.next()) {
             String[] pop = new String[2];
             pop[0] = rs.getString("numb");
@@ -75,7 +75,7 @@ public class Data {
             rooms.add(newRooms);
         }
        // meetingTime = new ArrayList<MeetingTime>();
-        rs = st.executeQuery("select id,time from meetingtime");
+        rs = st.executeQuery("select id,time from meetingtime where semester_id="+Driver.id);
         while (rs.next()) {
             String[] pop = new String[2];
             pop[1 - 1] = rs.getString("id");
@@ -94,7 +94,7 @@ public class Data {
             instructors.add(newRooms);
         }
         
-            rs = st.executeQuery("select course_id,number,maxNumberOfStudents,instructorId from course");
+            rs = st.executeQuery("select course_id,number,maxNumberOfStudents,instructorId from course where semester_id="+Driver.id);
 
             while (rs.next()) {
                 String[] pop = new String[4];
@@ -123,7 +123,7 @@ public class Data {
             
              for (int counter = 0; counter < dep.size(); counter++) {
                     ArrayList < Course > courses2 = new ArrayList<Course>();
-            ResultSet rss = st.executeQuery("select course_id,number,maxNumberOfStudents,instructorId from course inner join department on department.dept=course.dname where department.dept=" + "'" +dep.get(counter) + "'");
+            ResultSet rss = st.executeQuery("select course_id,number,maxNumberOfStudents,instructorId from course inner join department on department.dept=course.dname where department.dept=" + "'" +dep.get(counter) + "' and course.semester_id="+Driver.id);
             while (rss.next()) {
                 String[] popz = new String[4];
                 popz[0] = rss.getString("course_id");

@@ -89,6 +89,8 @@ public class GeneratedClassScheduleController implements Initializable {
     private void SubjectStartup() {
         try {
             Statement st = CreatingConnection.con.createStatement();
+            System.out.println(ClassScheduleController.classScheduleSemester);
+            
             ResultSet rs = st.executeQuery("select subjectId,courseId,section,instructorId,deptId,semesterId,roomNo,subjectTime from subject where semesterId="+ClassScheduleController.classScheduleSemester);
             String[] Values = new String[8];
             while (rs.next()) {

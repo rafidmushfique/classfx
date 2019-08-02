@@ -150,6 +150,4 @@ public class AccInfoController implements Initializable {
      alert.showAndWait();
     }
     
-    
-    
 }

@@ -52,12 +52,13 @@ public class FXMLDocumentController implements Initializable {
              window.show();
       
   }
+  
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          gif.setImage(new Image(this.getClass().getResource("home.gif").toExternalForm()));
-         gif.setVisible(true);
+         gif.setVisible(false);
     }    
     
 }

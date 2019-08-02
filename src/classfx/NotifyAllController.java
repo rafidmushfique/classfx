@@ -133,7 +133,7 @@ public class NotifyAllController implements Initializable {
     private void sendButtonAction(ActionEvent e) {
         try {
             Statement st = CreatingConnection.con.createStatement();
-            ResultSet rs = st.executeQuery("SELECT user.email from user inner join student on student.id=user.id inner join stu_takes on student.id=stu_takes.stu_id where sub_id='" + resultSubjectId + "' and semester_id=" + Classfx.semesterId);
+            ResultSet rs = st.executeQuery("SELECT distinct user.email from user inner join student on student.id=user.id inner join stu_takes on student.id=stu_takes.stu_id where sub_id='" + resultSubjectId + "' and semester_id=" + Classfx.semesterId);
             Loop1:
             while (rs.next()) {
                 sendEmail(rs.getString("email"));

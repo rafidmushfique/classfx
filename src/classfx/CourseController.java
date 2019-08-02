@@ -155,7 +155,7 @@ public class CourseController implements Initializable
             {
                
         try {
-            String sql="Select courseId from subject";
+            String sql="Select courseId from subject where semesterId="+Classfx.semesterId;
             Statement st=(Statement)con.createStatement();
             ResultSet rs=st.executeQuery(sql);
             while(rs.next())
@@ -195,7 +195,7 @@ public class CourseController implements Initializable
             {
             courseidtext.setText(courseid);
             try{
-            String sql="Select subject.subjectId, subject.deptId,subject.subjectDetails,subject.courseId,subject.subjectTime,faculty.name,subject.section from subject INNER JOIN faculty ON subject.instructorId=faculty.id WHERE courseId=?";
+            String sql="Select subject.subjectId, subject.deptId,subject.subjectDetails,subject.courseId,subject.subjectTime,faculty.name,subject.section from subject INNER JOIN faculty ON subject.instructorId=faculty.id WHERE courseId=? and subject.semesterId="+Classfx.semesterId;
             PreparedStatement st=con.prepareStatement(sql);
             st.setString(1,courseid);
             ResultSet rs=st.executeQuery();
@@ -220,7 +220,7 @@ public class CourseController implements Initializable
             public void starting2()
             {
                 try{
-            String sql="SELECT subject.courseId FROM subject INNER JOIN stu_takes ON subject.subjectId=stu_takes.sub_id WHERE stu_id="+id;
+            String sql="SELECT distinct  subject.courseId FROM subject INNER JOIN stu_takes ON subject.subjectId=stu_takes.sub_id WHERE stu_id="+id+" and subject.semesterId="+Classfx.semesterId;
                Statement st=(Statement)con.createStatement();
                ResultSet rs=st.executeQuery(sql);
                while(rs.next())
