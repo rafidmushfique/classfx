@@ -58,7 +58,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          gif.setImage(new Image(this.getClass().getResource("home.gif").toExternalForm()));
-         gif.setVisible(false);
+         gif.setVisible(true);
     }    
     
 }

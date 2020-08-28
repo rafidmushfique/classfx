@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="classfx.jar" size="3430982" download="eager" />
+    <jar href="classfx.jar" size="3430983" download="eager" />
     <jar href="lib\c3p0-0.9.1-pre6.jar" size="531005" download="eager" />
     <jar href="lib\dsn.jar" size="19171" download="eager" />
     <jar href="lib\gimap.jar" size="14769" download="eager" />

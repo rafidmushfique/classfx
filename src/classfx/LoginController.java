@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
     private ImageView loginGif2;
     @FXML
     private Button back;
-    private static String password = "102030";
+    private static String password = "1234";
     Connection con = CreatingConnection.con;
 
     @FXML
